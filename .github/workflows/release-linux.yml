@@ -9,6 +9,7 @@ jobs:
   localize:
     uses: ./.github/workflows/shared-steps.yml
     with:
+      run_on: ubuntu-24.04  # x86
       platform: ubuntu
       version_command: |
         wget --no-verbose -O Termius.deb https://www.termius.com/download/linux/Termius.deb || { echo "::error::Failed to download Termius.deb"; exit 1; }
@@ -16,6 +17,7 @@ jobs:
         if [ -z "$termius_version" ]; then
           termius_version=$(ar p Termius.deb control.tar.gz | tar -xzO ./control | grep -i 'Version:' | awk '{print $2}')
         fi
+        echo "TERMIUS_VERSION=$termius_version" >> $GITHUB_ENV
       install_command: |
         sudo apt-get update
         sudo apt-get install -y libnotify4 libsecret-1-0 python3-tk

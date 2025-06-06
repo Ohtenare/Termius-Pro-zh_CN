@@ -1429,3 +1429,7 @@ Host[|主机[
 Time[|时间[
 Device[|设备[
 Location[|位置[
+"Press ↓ to generate with AI"|"按下 ↓ 使用 AI 生成"
+"Convert your prompt to a shell command using AI"|"使用 AI 将提示符转换为 Shell 命令"
+"Activating autocomplete..."|"启用自动补全..."
+"Generating..."|"正在生成..."
