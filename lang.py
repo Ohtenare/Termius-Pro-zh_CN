@@ -65,12 +65,6 @@ class TermiusModifier:
         cmd = f"asar pack {self._app_dir} {self._original_path} --unpack-dir {{node_modules/@termius,out}}"
         run_command(cmd, shell=True)
 
-    @staticmethod
-    def _handle_remove_readonly(func, path, _):
-        """处理只读文件"""
-        os.chmod(path, stat.S_IWRITE)
-        func(path)
-
     def restore_backup(self):
         """完整还原操作"""
         if not os.path.exists(self._backup_path):
@@ -96,7 +90,7 @@ class TermiusModifier:
         self.restore_backup()
         # 清理
         if os.path.exists(self._app_dir):
-            shutil.rmtree(self._app_dir, onexc=self._handle_remove_readonly)
+            safe_rmtree(self._app_dir)
             logging.debug("Cleaned app directory.")
 
     def restore_changes(self):
@@ -222,6 +216,22 @@ def run_command(cmd, shell=False):
     except Exception as e:
         logging.error(f"Error: {e}")
         sys.exit(1)
+
+
+def _handle_remove_readonly(func, path, _):
+    """处理只读文件"""
+    os.chmod(path, stat.S_IWRITE)
+    func(path)
+
+
+def safe_rmtree(path):
+    """安全删除目录"""
+    if not os.path.exists(path):
+        return
+    if sys.version_info >= (3, 12):
+        shutil.rmtree(path, onexc=_handle_remove_readonly)
+    else:
+        shutil.rmtree(path, onerror=_handle_remove_readonly)
 
 
 def read_file(file_path, strip_empty=True):
