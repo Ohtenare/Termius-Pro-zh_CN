@@ -3,6 +3,10 @@ name: Shared Workflow Steps
 on:
   workflow_call:
     inputs:
+      run_on:
+        description: 'The running platform (ubuntu, macos, windows)'
+        required: true
+        type: string
       platform:
         description: 'The target platform (linux, macos, windows)'
         required: true
@@ -22,8 +26,8 @@ on:
 
 jobs:
   template:
-    runs-on: ${{ inputs.platform }}-latest
-    timeout-minutes: 30
+    runs-on: ${{ inputs.run_on }}
+    timeout-minutes: 15
 
     steps:
       - name: Checkout source code from repository
@@ -38,21 +42,27 @@ jobs:
         run: |
           python -m pip install --upgrade pip
 
-      - name: Detect Termius package version
+      - name: Extract Termius package version
         id: extract_version
-        shell: bash
         run: |
-          set -e
           echo "Extracting version from Termius package..."
 
           ${{ inputs.version_command }}
-          if [ -n "$termius_version" ]; then
-            echo "Extracted Termius version: $termius_version"
-            echo "TERMIUS_VERSION=$termius_version" >> $GITHUB_ENV
-          else
-            echo "::error::Failed to extract version from Termius package"
+
+          echo "Extracted Termius version: $termius_version"
+
+      - name: Validate extracted version
+        id: validate_version
+        shell: bash
+        run: |
+          set -e
+          echo "Validating extracted version..."
+          if [ -z "$TERMIUS_VERSION" ]; then
+            echo "::error::Version validation failed - no version extracted"
             exit 1
           fi
+          echo "Version validation successful"
+          echo "Extracted Termius version: $TERMIUS_VERSION"
 
       - name: Fetch latest GitHub release version
         shell: bash
@@ -88,9 +98,7 @@ jobs:
 
       - name: Install Termius application package
         if: steps.compare_versions.outputs.should_continue == 'true'
-        shell: bash
         run: |
-          set -e
           echo "Installing Termius v$TERMIUS_VERSION package..."
           ${{ inputs.install_command }}
           echo "Termius package installed successfully"
