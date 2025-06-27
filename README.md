@@ -2,8 +2,8 @@
 
 ## 🎉 简介与说明
 
-- Termius 汉化脚本。
-- 大家可以在官方[功能请求](https://ideas.termius.com/tabs/1-under-consideration)进行反馈，让官方尽快支持[中文](https://ideas.termius.com/c/82-chinese-localization)。
+- [Termius][termius] 汉化脚本。
+- 大家可以在官方[功能请求][consideration]进行反馈，让官方尽快支持[中文][localization]。
 
 ## ✨ 功能特性
 
@@ -71,17 +71,43 @@ rules/
 
 如果没有相关环境，可以手动汉化。
 
-1. 前往 [releases](https://github.com/ArcSurge/Termius-Pro-zh_CN/releases) 下载对应版本的 `app.asar` 文件。
+1. 前往 [Releases][releases] 下载对应版本的 `app.asar` 文件。
 2. 找到 Termius 安装目录，通常位置为:
     - **Windows**: `C:\Users\你的用户名\AppData\Local\Programs\Termius`。
     - **Linux**: `/opt/Termius`。
     - **MacOS**: `/Applications/Termius.app/Contents`。
 3. 将下载的 `app.asar` 文件覆盖 `resources` 文件夹下的 `app.asar` 文件。
 4. 如果你不想自动更新，请删除 `app-update.yml` 文件。
-5. 最后，如果没有想要的版本，可 **fork** 本项目，在仓库的 `Settings > Secrets and variables > Actions > Variables` 中定义变量:
-   - **Name**: RELEASE_LIST
-   - **Value**: l,lk,lt
+5. 最后，如果没有想要的版本，可在 [Fork][fork] 本项目后前往仓库的 **Settings > Secrets and variables > Actions > Variables** 页面定义变量:
+   - **Name**: `RELEASE_LIST`
+   - **Value**: `l,lk,lt`
    - 默认`l,lk,lt`，代表生成三个版本，l为汉化，lt为汉化+试用，lk为汉化+跳过登录。可自行修改，通过逗号分隔。
+
+## 📱 关于安卓版
+- 目前只有汉化功能，暂无其他功能。并且部分词条在源码中，暂未汉化。
+- 由于手机端和桌面端版本号不同，因此安卓版本不会发布在 `Releases` 中，而是暂时托管在 [Actions][localize-android]。[Actions][localize-android] 每天运行一次，请自行查找对应版本进行下载。注意，这个是需要**登录**才可以下载的。
+- 若你计划 [Fork][fork] 此项目，请在 [Fork][fork] 后前往仓库的 **Settings > Secrets and variables > Actions > Secrets** 页面，点击 <kbd>New repository secret</kbd> 定义私密变量。
+  - **Name**: `APK_SIGN_PROPERTIES`
+  - **Value**: 填写 [apk.sign.properties.example](android/apk.sign.properties.example) 文件内容（请根据需要修改文件内容）
+
+### 🤖 关于脚本
+- 安卓相关资源均存放在 [android](android) 目录下。
+- 所需工具：
+  - python（运行环境）
+  - zipalign（对齐工具 `sudo apt install -y zipalign` 安装）
+  - apksigner（签名工具 `sudo apt install -y apksigner` 安装）
+  - keytool（密钥生成工具，集成在 JDK 中）
+- 运行：
+   ```bash
+   # 进入安卓目录
+   cd android
+   # 配置签名信息（请自行修改内容）
+   mv apk.sign.properties.example apk.sign.properties
+   # 安装依赖
+   pip install -r requirements.txt
+   # 运行脚本
+   python apktools.py
+   ```
 
 ## 🔔 注意事项
 
@@ -95,3 +121,15 @@ rules/
 - 用于测试和学习研究，禁止用于商业用途，不能保证其合法性、准确性、完整性和有效性，请根据情况自行判断。
 - 本人对任何问题概不负责，包括但不限于由任何脚本错误导致的任何损失或损害，使用即表示知晓风险。
 - 保留随时终止项目的权利。
+
+
+<!-- LINK -->
+[termius]: https://termius.com
+[consideration]: https://ideas.termius.com/tabs/1-under-consideration
+[localization]: https://ideas.termius.com/c/82-chinese-localization
+[releases]: https://github.com/ArcSurge/Termius-Pro-zh_CN/releases
+[fork]: https://github.com/ArcSurge/Termius-Pro-zh_CN/fork
+[secrets]: https://github.com/ArcSurge/Termius-Pro-zh_CN/settings/secrets/actions
+[variables]: https://github.com/ArcSurge/Termius-Pro-zh_CN/settings/variables/actions
+[actions]: https://github.com/ArcSurge/Termius-Pro-zh_CN/actions
+[localize-android]: https://github.com/ArcSurge/Termius-Pro-zh_CN/actions/workflows/localize-android.yml

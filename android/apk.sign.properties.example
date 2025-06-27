@@ -1,0 +1,6 @@
+sign.key.alias=Termius_zh
+sign.key.password=android
+sign.key.dname.cn=ArcSurge
+sign.key.dname.c=CN
+sign.keystore=Termius_zh.jks
+sign.keystore.password=android

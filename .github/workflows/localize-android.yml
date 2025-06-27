@@ -1,0 +1,50 @@
+name: Localize Android
+
+on:
+  schedule:
+    - cron: '0 16 * * *'
+  workflow_dispatch:
+
+jobs:
+  localize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout source code from repository
+        uses: actions/checkout@v4
+
+      - name: Configure Python runtime environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          cd android
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          sudo apt install -y zipalign
+          sudo apt install -y apksigner
+
+      - name: Run script
+        run: |
+          cd android
+          echo "${{ secrets.APK_SIGN_PROPERTIES }}" > apk.sign.properties
+
+          python apktools.py
+
+      - name: Get Version
+        id: version
+        run: |
+          version=$(curl -s -A "Mozilla/5.0" "https://www.apkmirror.com/apk/termius-corporation/termius-ssh-telnet-client/" | grep -oP 'Termius - Modern SSH Client \K\d+\.\d+\.\d+' | head -n 1)
+          if [ -z "$version" ]; then
+            version="0.0.0"
+          fi
+          echo "::notice::Termius.apk version: $version"
+          echo "version=$version" >> $GITHUB_OUTPUT
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Termius_v${{ steps.version.outputs.version }}
+          path: android/out/

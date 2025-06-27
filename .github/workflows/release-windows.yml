@@ -9,9 +9,28 @@ jobs:
   localize:
     uses: ./.github/workflows/shared-steps.yml
     with:
+      run_on: windows-2025  # x86
       platform: windows
       version_command: |
-        termius_version=$(choco search termius | grep -Eo 'termius\s+([0-9]+\.[0-9]+\.[0-9]+)' | awk '{print $2}')
-      install_command: |
-        choco install termius -y --no-progress --version=$TERMIUS_VERSION
+        if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
+          Write-Host "::error::winget not found."
+          exit 1
+        }
+        winget --version
+        winget upgrade winget --accept-package-agreements --accept-source-agreements --disable-interactivity
+        winget --version
+        $WINGET_ID = "Termius.Termius"
+        winget search --exact --id $WINGET_ID
+        $termius_version = winget search --exact --id $WINGET_ID | Select-String -Pattern "$WINGET_ID\s+([0-9]+\.[0-9]+\.[0-9]+)" | ForEach-Object {
+          if ($_ -match "$WINGET_ID\s+([0-9]+\.[0-9]+\.[0-9]+)") { $matches[1] }
+        }
+
+        if ($termius_version) {
+          Write-Host "Extracted Termius version: $termius_version"
+          Add-Content -Path $env:GITHUB_ENV -Value "TERMIUS_VERSION=$termius_version"
+        } else {
+          Write-Host "::error::Failed to extract version from Termius package"
+          exit 1
+        }
+      install_command: winget install -e --id Termius.Termius --silent
       source_path: $HOME/AppData/Local/Programs/Termius/resources/app.asar

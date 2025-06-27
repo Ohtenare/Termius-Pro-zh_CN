@@ -8,16 +8,8 @@
 "Reload Page"|"重新加载页面"
 "Restart Application"|"重启应用程序"
 "Toggle app theme"|"切换应用主题"
-
 "Find a host or ssh user@hostname..."|"查找主机或 ssh user@hostname..."
 "Next"|"下一个"
-" Action required"|" 需要操作"
-" connections left"|" 个剩余连接"
-"Do you want to close run?"|"你想关闭运行吗?"
-"All connections will be closed. Do you want to finish execution and close run?"|"所有连接都将关闭, 是否要完成执行并关闭运行?"
-"Close run"|"关闭运行"
-"Executed":"Executing..."|"已执行":"正在执行..."
-
 title:"Pro",pricePer|title:"专业版",pricePer
 title:"Team",pricePer|title:"团队版",pricePer
 title:"Business",pricePer|title:"企业版",pricePer
@@ -117,7 +109,7 @@ title:"Use Option as Meta key"|title:"将 Option 键映射为 Meta 键"
 "Text Size"|"字体大小"
 "Suggest new"|"推荐新内容"
 "Keyword highlighting"|"关键词高亮"
-"Would you like to add custom rules to highlight output in the terminal?"|"你想要加入自定义的终端高亮关键词输出规则吗？"
+"Would you like to add custom rules to highlight output in the terminal?"|"你想要加入自定义的终端高亮关键词输出规则吗?"
 "Detect Host Operating System"|"检测主机操作系统"
 "This option will execute a script when connecting to a host for the first time to detect its operating system. This will allow Termius to show a corresponding OS icon in the list of hosts."|"此选项将在首次连接到主机时执行脚本, 以检测其操作系统。这将允许 Termius 在主机列表中显示相应的操作系统图标。"
 "The script will be executed only if server didn't return anything about its OS."|"只有当服务器没有返回任何有关其操作系统的信息时, 才会执行该脚本。"
@@ -166,9 +158,6 @@ title:"Oldest to newest"|title:"最旧到最新"
 title:"Local"|title:"本地"
 title:"Remote"|title:"远程"
 title:"Dynamic"|title:"动态"
-title:"Expand all"|title:"展开全部"
-title:"Collapse all"|title:"全部折叠"
-title:"Connect to"|title:"连接到"
 operation:"Copy"|operation:"复制"
 operation:"Move"|operation:"移动"
 listName:"Packages"|listName:"包"
@@ -225,31 +214,6 @@ label:"Public Key"|label:"公钥"
 {role:"cut"}|{label:"剪切",role:"cut"}
 {role:"minimize"}|{label:"最小化",role:"minimize"}
 
-return"Running"|return"正在运行"
-return"Closed Successfully"|return"已成功关闭"
-return"Closed with Error"|return"因错误关闭"
-return"Connecting"|return"正在连接"
-return"Action Required"|return"需要操作"
-["initializing","Initializing..."]|["initializing","正在初始化..."]
-["connecting","Connecting..."]|["connecting","正在连接..."]
-["error","Connection error"]|["error","连接错误"]
-["protocol","Waiting the protocol..."]|["protocol","正在等待协议..."]
-["identity","Waiting the username..."]|["identity","正在等待用户名..."]
-["fingerprint","Waiting the fingerprint..."]|["fingerprint","正在等待指纹..."]
-["requestPassword","Waiting for password..."]|["requestPassword","正在等待密码..."]
-["authInteractive","Waiting for password..."]|["authInteractive","正在等待密码..."]
-["requestPassphrase","Waiting for passphrase..."]|["requestPassphrase","正在等待密码..."]
-["requestPIN","Waiting for PIN..."]|["requestPIN","正在等待 PIN..."]
-["keyboardInteractive","Waiting the passcode..."]|["keyboardInteractive","正在等待密码..."]
-["requestSignature","Waiting for signature..."]|["requestSignature","正在等待签名..."]
-["discoverableKeys","Waiting for discoverable keys..."]|["discoverableKeys","等待可发现的密钥..."]
-["chooseKey","Waiting the key..."]|["chooseKey","正在等待密钥..."]
-["requestSKPresence","Waiting for SK Presence..."]|["requestSKPresence","等待 SK 到来..."]
-["scriptError","Exit code: "]|["scriptError","退出代码: "]
-["executing","Executing snippet..."]|["executing","执行代码片段..."]
-["executed","Exit code: "]|["executed","退出代码: "]
-["sent","Snippet sent to execution"]|["sent","代码片段已发送至执行"]
-
 children:"Public Key"|children:"公钥"
 "Choose protocol"|"选择协议"
 "Continue & Save"|"继续并保存"
@@ -269,7 +233,7 @@ children:"Public Key"|children:"公钥"
 "Data has not been synchronized yet"|"数据未同步"
 "Delete local data and start over"|"删除本地数据并重新开始"
 "Allow local SSH/SFTP connections"|"允许本地 SSH/SFTP 连接"
-"Need to import something else?"|"需要导入其他内容吗？"
+"Need to import something else?"|"需要导入其他内容吗?"
 "Delete local data and re-sync"|"删除本地数据并重新同步"
 "Are you sure you want to delete tag?"|"你确定要删除标记吗?"
 "A new update is ready to install"|"一个更新已经准备就绪"
@@ -292,7 +256,7 @@ children:"Public Key"|children:"公钥"
 "New Update available."|"新版本可用。"
 "No update available."|"无可用更新。"
 "Experiment Toggles"|"实验性开关"
-"How do we know?"|"我们如何知道？"
+"How do we know?"|"我们如何知道?"
 "Password strength:"|"密码强度:"
 "Feature Toggles"|"新特性开关"
 "Add new host"|"添加新主机"
@@ -467,13 +431,13 @@ no_credentials_sharing:"No credentials",credentials_sharing:"Credentials"|no_cre
 "Intermediate host"|"中间主机"
 "Destination address"|"目标地址"
 "Destination port number"|"目标端口号"
-"Need help configuring the port forwarding rule?"|"需要帮助配置端口转发规则吗？"
+"Need help configuring the port forwarding rule?"|"需要帮助配置端口转发规则吗?"
 "Open Port Forwarding Wizard"|"打开端口转发向导"
 "Edit Port Forwarding"|"编辑端口转发"
 "New Port Forwarding"|"新建端口转发"
 "Discard changes"|"放弃更改"
-"Do you want to discard changes?"|"你想放弃更改吗？"
-"Not all required fields are filled. Do you want to finish editing and discard all changes?"|"并非所有必填字段都已填写。你想完成编辑并放弃所有更改吗？"
+"Do you want to discard changes?"|"你想放弃更改吗?"
+"Not all required fields are filled. Do you want to finish editing and discard all changes?"|"并非所有必填字段都已填写。你想完成编辑并放弃所有更改吗?"
 "Bind address"|"绑定地址"
 "Editing in progress"|"编辑进行中"
 
@@ -546,8 +510,6 @@ title:"Tags"|title:"标记"
 "Generate"|"生成"
 "All changes saved"|"已保存所有更改"
 "Run"|"运行"
-"Run and Keep"|"运行并保持"
-"Run and keep"|"运行并保持"
 "Grid"|"网格"
 "List"|"列表"
 placeholder:"Label"|placeholder:"标签"
@@ -949,9 +911,6 @@ title:"Generate Biometric Key"|title:"生成生物识别密钥"
 "Number of KDF rounds when saving ED25519 key. Higher numbers can increase protection of the private key but slower passphrase verification."|"保存 ED25519 密钥时的 KDF 轮数。数字越大，私钥的保护性越强，但密码验证速度越慢。"
 "SAVE"|"保存"
 "Set a label"|"设置标签"
-"Connecting..."|"正在连接..."
-" Success"|" 成功"
-"Move to tab"|"移至选项卡"
 singular:"Identity",plural:"Identities"|singular:"身份",plural:"身份"
 "Select Identity"|"选择身份"
 "Identities"|"身份"
@@ -1113,7 +1072,7 @@ children:"Reconnect"|children:"重新连接"
 "Snippet packages"|"片段包"
 "Personal vaults"|"个人保管库"
 "Clear"|"清除"
-"More than 16 hosts selected"|"已选择 16 台以上的主机"
+
 "The file has an incorrect format"|"文件格式不正确"
 /ownerState:([^,]+),children:([^\?]+)\?([\w$]+)\("span",{children:([a-zA-Z]+)}\)/|ownerState:\g<1>,children:\g<2>?\g<3>("span",{children:\g<4>==="Password:"?"密码:":typeof \g<4>==="string"?\g<4>.replace(/Password for ([^:]+):/, "$1的密码:"):\g<4>})
 /{htmlFor:([^,]+),id:([a-zA-Z]+)},([a-zA-Z]+),{children:([a-zA-Z]+)}/|{htmlFor:\g<1>,id:\g<2>},\g<3>,{children:\g<4>==="Password:"?"密码:":typeof \g<4>==="string"?\g<4>.replace(/Password for ([^:]+):/, "$1的密码:"):\g<4>}
@@ -1236,7 +1195,7 @@ pricePer:"user / month"|pricePer:"用户 / 月"
 "Multiple vaults with granular permissions"|"具有细粒度权限的多个保管库"
 "SOC2 Type II Report"|"SOC2 类型 II 报告"
 "Enterprise SSO"|"企业 SSO 登录"
-"You will be able to switch to Starter and keep all your data after the trial period ends."|"试用期结束后，你将能够切换到 Starter 并保留所有数据。"
+"You will be able to switch to Starter and keep all your data after the trial period ends."|"试用期结束后，你将能够切换到入门版并保留所有数据。"
 "Enjoy the rest of free trial with the peace of mind."|"安心享受剩下的免费试用吧。"
 "Back to all plans"|"回到所有计划"
 /`You still have \${(\w+)} days left on your free trial ⏳`/|`你的免费试用还剩 ${\g<1>} 天⏳`
@@ -1264,7 +1223,7 @@ children:"Recent sessions"|children:"最近的会话"
 "Open your email for verification"|"打开你的电子邮件进行验证"
 "For extra security, we sent you a verification email to"|"为了提高安全性，我们向你发送了一封验证电子邮件"
 "I have verified this device"|"我已经验证了这个设备"
-"Didn't get email?"|"没有收到电子邮件？"
+"Didn't get email?"|"没有收到电子邮件?"
 "Contact us"|"联系我们"
 "Now you can share groups with your team to make sure your team is up-to-date with the latest changes in the configuration."|"现在，你可以与你的团队共享组，以确保你的团队掌握最新的配置更改。"
 "Your team has been configured!"|"你的团队已配置!"
@@ -1280,7 +1239,7 @@ placeholder:"New Workspace"|placeholder:"新建工作区"
 "The workspace was changed"|"工作区已更改"
 "Save changes to the workspace."|"保存对工作区的更改。"
 "Save to template"|"保存到模板"
-"Save a workspace template?"|"保存工作区模板吗？"
+"Save a workspace template?"|"保存工作区模板吗?"
 "Create a template of this workspace to easily reuse it."|"创建此工作区的模板以方便重复使用。"
 "Save a template"|"保存模板"
 "Workspace Tab"|"工作区选项卡"
@@ -1399,7 +1358,7 @@ children:"Annual"|children:"年度"
 "No tags found. You can add tags when editing a host."|"找不到标记。编辑主机时可以添加标记。"
 "Logs are disabled for the selected vault"|"所选保管库的日志已禁用"
 "Enable logs for this vault in settings."|"在设置中启用此保管库的日志。"
-`You don't have logs in the selected ${Ai("vault",e.length)}`|`所选保管库中没有日志`
+/`You don't have logs in the selected \${\S+?}`/|`所选保管库中没有日志`
 "Start by connecting to a host."|"首先连接到主机。"
 "A log will be saved when you end the session."|"结束会话时将保存日志。"
 "Logs retention policies"|"日志保留策略"
@@ -1429,3 +1388,36 @@ Host[|主机[
 Time[|时间[
 Device[|设备[
 Location[|位置[
+"Press ↓ to generate with AI"|"按下 ↓ 使用 AI 生成"
+"Convert your prompt to a shell command using AI"|"使用 AI 将提示符转换为 Shell 命令"
+"Activating autocomplete..."|"启用自动补全..."
+"Generating..."|"正在生成..."
+"It’s time to choose the right plan for you️ "|"是时候为你选择合适的计划了 "
+/"You are currently on a ",(\w+?)\("b",{children:"Starter"}\)," plan"/|"当前正在使用",\g<1>("b",{children:"入门"}),"计划"
+"Don't need a team?"|"不需要团队吗?"
+"Stay on your Pro plan"|"保持你的专业计划"
+/`You have \${(\w+?)} day\S+? left on your free \${([\w&!]+?)\?"Team":""} trial`/|`你的免费${\g<2>?"团队":""}试用版还剩 \g<1> 天`
+"Your subscription has expired."|"你的订阅已过期。"
+/`Your free \${(\w+?)\?"Team":""} trial has expired.`/|`你的免费${\g<1>?"团队":""}试用版已过期。`
+"Want to keep all the benefits of Termius Pro?"|"想保留 Termius 专业版的所有好处吗?"
+"Back up and Sync your data in an encrypted cloud vault"|"在加密的云保管库中备份和同步你的数据"
+"Access your vault from an unlimited number of your devices"|"从无限数量的设备访问你的保管库"
+"Use the entire toolbox of professional SSH tools"|"使用专业 SSH 工具的完整工具箱"
+"No, downgrade me to Starter"|"不，将我降级为入门版"
+"Yes, I want Pro"|"是的，我想要专业版"
+"Good stuff doesn’t last forever"|"好东西不会永远存在"
+"There are no more extensions left. It’s time to select a plan that works best for you and your team."|"已没有更多的延期选项了。现在是时候为你和你的团队挑选一个最合适的方案了。"
+"Team plan is not for you?"|"团队计划不适合你吗?"
+"Deactivate the team"|"停用团队"
+"Need more time to evaluate the Team plan?"|"需要更多时间来评估团队计划?"
+"Termius helps avoid common team problems:"|"Termius 有助于避免常见的团队问题:"
+"No, I don't need a team"|"不，我不需要一个团队"
+/`You have switched to \${(\w+?)} plan successfully`/|`你已成功切换到${\g<1>}计划`
+"Save a working day for each member on searching for connections monthly."|"每月为每位成员在寻找连接上节省一个工作日。"
+"Keep your connection information up-to-date in a single place."|"将你的连接信息保持在一个地方。"
+"Securely grant access to passwords and keys via shared encrypted vault."|"通过共享加密保管库安全地授予对密码和密钥的访问权限。"
+"Extend free trial"|"延长免费试用期"
+"Request trial extension"|"请求延长试用期"
+"Processing your extension request..."|"正在处理你的延期请求..."
+"Your trial has been successfully extended by 7 days!"|"你的试用期已成功延长7天！"
+"You have regained full Termius access until"|"你已恢复Termius的完全访问权限，直到"

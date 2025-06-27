@@ -9,6 +9,7 @@ jobs:
   localize:
     uses: ./.github/workflows/shared-steps.yml
     with:
+      run_on: macos-15  # arm64
       platform: macos
       version_command: |
         curl -L -o Termius.dmg https://termi.us/mac-download || { echo "::error::Failed to download Termius.dmg"; exit 1; }
@@ -24,6 +25,7 @@ jobs:
           termius_version=$(/usr/libexec/PlistBuddy -c "Print :CFBundleShortVersionString" "$info_plist_path")
           if [ -n "$termius_version" ]; then
             echo "Termius version: $termius_version"
+            echo "TERMIUS_VERSION=$termius_version" >> $GITHUB_ENV
           else
             echo "::error::Failed to get version from Info.plist"
             exit 1
